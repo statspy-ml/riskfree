@@ -33,12 +33,12 @@ jobs:
           pip install mkdocs-material
 
       - name: Build with MkDocs
-        run: mkdocs build --site-dir ./_site
+        run: mkdocs build --site-dir ./site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: ./site
 
   deploy:
     environment:
