@@ -1,6 +1,15 @@
-site_name: RiskFree
-
-site_url: https://riskfree.com.br
-
+site_name: "Nome do Seu Site"
 theme:
   name: material
+
+  palette:
+    primary: "indigo"
+    accent: "indigo"
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+  # Adicione outros parâmetros de configuração do tema aqui
+
+# Outras configurações possíveis
+site_url: "https://statspy-mk.github.io/riskfree"
+use_directory_urls: true
