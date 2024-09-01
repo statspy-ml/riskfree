@@ -5,7 +5,9 @@ description = "Add your description here"
 authors = [
     { name = "Rodrigo Polverari rpptoledo@rd.com.br", email = "rpptoledo@rd.com.br" }
 ]
-dependencies = []
+dependencies = [
+    "mkdocs>=1.6.1",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 license = { text = "MIT" }
