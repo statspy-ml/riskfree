@@ -1,0 +1,25 @@
+[project]
+name = "riskfree"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Rodrigo Polverari rpptoledo@rd.com.br", email = "rpptoledo@rd.com.br" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.8"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/riskfree"]
