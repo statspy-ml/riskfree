@@ -1,1 +1,6 @@
-site_name: My Docs
+site_name: RiskFree
+
+site_url: https://www.riskfree.com.br
+
+theme:
+  name: material
