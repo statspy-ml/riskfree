@@ -5,12 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodrigo Polverari Toledo - Tech Lead & Data Science</title>
-    <!-- Use CDNs com atributos de integridade para melhorar a segurança -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <!-- Referência ao CSS externo -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Estilos críticos inline como backup -->
     <style>
         :root {
             --primary: #0366d6;
@@ -49,7 +43,7 @@
             overflow: hidden;
         }
 
-        #particles-js {
+        .particles-js {
             position: absolute;
             top: 0;
             left: 0;
@@ -67,19 +61,361 @@
             text-align: center;
         }
 
-        .tab-content.active {
-            display: block;
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            background-color: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .skill-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .skill-level {
+            height: 8px;
+            background-color: #e1e4e8;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -13px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            margin: 10px 0;
+        }
+
+        .timeline-subtitle {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .education {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-date {
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .education-degree {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .education-school {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+        }
+
+        .tab-container {
+            margin-bottom: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background-color: var(--primary);
+            color: white;
         }
 
         .tab-content {
             display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .language-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .language-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 8px solid #e1e4e8;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .language-progress {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            border-top-color: var(--primary);
+            border-right-color: var(--primary);
+            transform: rotate(45deg);
+        }
+
+        .language-name {
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .left::after,
+            .right::after {
+                left: 18px;
+            }
+
+            .right {
+                left: 0;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .education {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <div id="particles-js"></div>
+        <div id="particles-js" class="particles-js"></div>
         <div class="container header-content">
             <div class="profile-img">RP</div>
             <h1>Rodrigo Polverari Toledo</h1>
@@ -108,670 +444,3 @@
                         <path
                             d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
                     </svg>
-                    <span>www.linkedin.com/in/rodrigopptoledo</span>
-                </div>
-                <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                    </svg>
-                    <span>São Paulo, SP, Brasil</span>
-                </div>
-            </div>
-            <a href="#" class="btn" onclick="window.print()">Download CV</a>
-        </div>
-    </header>
-
-    <section class="container">
-        <div class="summary-container">
-            <h2>Resumo Profissional</h2>
-            <p class="summary-text">
-                Como Tech Lead na RD, lidero uma equipe de cientistas e engenheiros de dados que desenvolvem e
-                implementam soluções
-                inovadoras em ciência de dados e machine learning. Com PhD em Informática e mais de 18 anos de
-                experiência em análise
-                de dados e modelagem preditiva, possuo amplo conhecimento em <span class="highlight">Python, R, SQL,
-                    AWS, Azure e NLP</span>.
-            </p>
-            <p class="summary-text">
-                Minha missão é aproveitar dados e tecnologia para resolver problemas complexos e criar valor para nossos
-                clientes e stakeholders.
-                Apliquei ciência de dados em diversos domínios, como RH, telemedicina, vendas, detecção de fraudes e
-                previsão de preços.
-                Também contribuí para pesquisa, desenvolvimento e implementação de modelos estatísticos, machine
-                learning e inteligência
-                artificial, utilizando técnicas avançadas como record linkage, extração de tópicos, análise de
-                sentimentos e previsão de churn.
-                Sou apaixonado por dados, crescimento, qualidade e inovação.
-            </p>
-        </div>
-
-        <div class="stat-cards">
-            <div class="stat-card">
-                <div class="stat-number">18+</div>
-                <div class="stat-label">Anos de Experiência</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">PhD</div>
-                <div class="stat-label">Grau Acadêmico</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">Projetos de ML/AI</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Idiomas</div>
-            </div>
-        </div>
-
-        <div class="charts-row">
-            <div class="chart-container">
-                <h3>Áreas de Expertise</h3>
-                <canvas id="expertiseChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <h3>Experiência em Tecnologias</h3>
-                <canvas id="techChart"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <div class="tab-container">
-            <h2>Competências</h2>
-            <div class="tabs">
-                <button class="tab active" onclick="openTab(event, 'technicalSkills')">Competências Técnicas</button>
-                <button class="tab" onclick="openTab(event, 'softSkills')">Soft Skills</button>
-                <button class="tab" onclick="openTab(event, 'languages')">Idiomas</button>
-            </div>
-
-            <div id="technicalSkills" class="tab-content active">
-                <div class="skills-container">
-                    <div class="skill-card">
-                        <div class="skill-name">Python</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Machine Learning</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">NLP</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">AWS</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Azure</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">SQL</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">R</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">MLOps</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Estatística</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">GenAI</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Fraud Detection</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">AWS Bedrock</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="softSkills" class="tab-content">
-                <div class="skills-container">
-                    <div class="skill-card">
-                        <div class="skill-name">Liderança Técnica</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Gestão de Projetos</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Resolução de Problemas</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Comunicação</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Trabalho em Equipe</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-name">Pensamento Analítico</div>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="languages" class="tab-content">
-                <div class="languages">
-                    <div class="language-item">
-                        <div class="language-circle">
-                            <div class="language-progress" style="transform: rotate(360deg);"></div>
-                            100%
-                        </div>
-                        <span class="language-name">Português</span>
-                    </div>
-                    <div class="language-item">
-                        <div class="language-circle">
-                            <div class="language-progress" style="transform: rotate(320deg);"></div>
-                            90%
-                        </div>
-                        <span class="language-name">Inglês</span>
-                    </div>
-                    <div class="language-item">
-                        <div class="language-circle">
-                            <div class="language-progress" style="transform: rotate(280deg);"></div>
-                            80%
-                        </div>
-                        <span class="language-name">Espanhol</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2>Experiência Profissional</h2>
-        <div class="timeline">
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <span class="timeline-date">Setembro 2022 - Presente</span>
-                    <h3 class="timeline-title">Tech Lead II</h3>
-                    <h4 class="timeline-subtitle">RD - São Paulo, Brasil</h4>
-                    <p>Liderança técnica em DevOps, LLMOps, AWS, Azure, modelos NLP, modelos avançados de Record Linkage
-                        (fast KNN, Auto-Block), Detecção de Fraudes e especialista em IA. Experiência com AWS Bedrock.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">AWS</span>
-                        <span class="tech-badge">Azure</span>
-                        <span class="tech-badge">NLP</span>
-                        <span class="tech-badge">DevOps</span>
-                        <span class="tech-badge">LLMOps</span>
-                        <span class="tech-badge">Fraud Detection</span>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <span class="timeline-date">Outubro 2021 - Fevereiro 2024</span>
-                    <h3 class="timeline-title">Senior Data Scientist</h3>
-                    <h4 class="timeline-subtitle">Pin People - Brasil</h4>
-                    <p>Aplicação de Ciência de Dados em RH: Experiência do Funcionário, Experiência do Candidato,
-                        Modelos de Machine Learning para Turnover/Churn, Extração de Tópicos, Análise de Sentimentos.
-                        Visualizações de dados com Grafana. MLOps, DataOps, DSOps. AWS Cloud: Athena, S3, Glue,
-                        Sagemaker, Comprehend.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Machine Learning</span>
-                        <span class="tech-badge">HR Analytics</span>
-                        <span class="tech-badge">AWS</span>
-                        <span class="tech-badge">Grafana</span>
-                        <span class="tech-badge">MLOps</span>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <span class="timeline-date">Junho 2022 - Dezembro 2023</span>
-                    <h3 class="timeline-title">Machine Learning Engineer</h3>
-                    <h4 class="timeline-subtitle">Portal Telemedicina - Brasil</h4>
-                    <p>Trabalhei em um projeto em colaboração com a UNICEF, desenvolvendo um modelo de machine learning
-                        aplicado no contexto de melhoria das condições de vida de crianças de 0 a 15 anos, com foco
-                        particular em aspectos de desenvolvimento infantil e cobertura vacinal.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Machine Learning</span>
-                        <span class="tech-badge">Saúde</span>
-                        <span class="tech-badge">Telemedicina</span>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <span class="timeline-date">Fevereiro 2021 - Agosto 2022</span>
-                    <h3 class="timeline-title">Data Scientist</h3>
-                    <h4 class="timeline-subtitle">Grupo Marista - Curitiba</h4>
-                    <p>Desenvolvimento de modelo de machine learning online para reputação em e-commerce na Olist.
-                        Detecção de fraudes online em e-commerce (Olist/Mercado Livre). Atividades de pesquisa em
-                        detecção de concept drift aplicada a machine learning online em e-commerce na Olist. ML de
-                        streaming com AWS Kinesis/Firehose, Apache Kafka/Apache Flink.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">e-Commerce</span>
-                        <span class="tech-badge">Online ML</span>
-                        <span class="tech-badge">Fraud Detection</span>
-                        <span class="tech-badge">AWS Kinesis</span>
-                        <span class="tech-badge">Apache Kafka</span>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <span class="timeline-date">Outubro 2010 - Maio 2021</span>
-                    <h3 class="timeline-title">Fundador</h3>
-                    <h4 class="timeline-subtitle">Valor e Arte | Connect - Curitiba, Brasil</h4>
-                    <p>Avaliações de risco e valores de ativos para indústrias e bancos através de modelos estatísticos
-                        e machine learning. Determinação de modelos preditivos para análise de preços em operações de
-                        garantia de créditos. Análise de perfil econômico de investimento e riscos ambientais.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Estatística</span>
-                        <span class="tech-badge">Análise de Risco</span>
-                        <span class="tech-badge">Modelos Preditivos</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2>Formação Acadêmica</h2>
-        <div class="education">
-            <div class="education-item">
-                <div class="education-date">Fevereiro 2019 - Junho 2023</div>
-                <div class="education-degree">Doutorado (PhD) em Informática</div>
-                <div class="education-school">Universidade Estadual de Campinas</div>
-            </div>
-            <div class="education-item">
-                <div class="education-date">Março 2020 - Agosto 2021</div>
-                <div class="education-degree">Pós-Graduação em Data Science & Big Data</div>
-                <div class="education-school">Universidade Positivo</div>
-            </div>
-            <div class="education-item">
-                <div class="education-date">2016 - 2020</div>
-                <div class="education-degree">Bacharelado em Matemática</div>
-                <div class="education-school">Centro Universitário Internacional UNINTER</div>
-            </div>
-            <div class="education-item">
-                <div class="education-date">2014 - 2015</div>
-                <div class="education-degree">Especialização em Qualidade</div>
-                <div class="education-school">Fundação Vanzolini</div>
-            </div>
-            <div class="education-item">
-                <div class="education-date">2005 - 2010</div>
-                <div class="education-degree">Mestrado em Engenharia Química</div>
-                <div class="education-school">Universidade Estadual de Campinas</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <h2>Certificações</h2>
-        <div class="skills-container">
-            <div class="skill-card">
-                <div class="skill-name">Machine Learning Engineer</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-name">Manage Kubernetes in Google Cloud</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-name">Skill Badge</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-name">Data Science: R Basics</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-name">Foundations of Data Science: Computational Thinking with Python</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-name">Foundations of Data Science: Inferential Thinking by Resampling</div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2025 Rodrigo Polverari Toledo</p>
-        </div>
-    </footer>
-
-    <!-- Scripts embutidos para garantir funcionalidade mesmo se o arquivo externo falhar -->
-    <script>
-        // Função para inicializar todas as funcionalidades interativas do currículo
-        function initializeCurriculum() {
-            console.log("Inicializando currículo interativo...");
-
-            // Inicializar Particles.js (se disponível e o elemento existir)
-            if (typeof particlesJS !== 'undefined') {
-                const particlesElement = document.getElementById('particles-js');
-                if (particlesElement) {
-                    try {
-                        particlesJS('particles-js', {
-                            particles: {
-                                number: {
-                                    value: 80,
-                                    density: {
-                                        enable: true,
-                                        value_area: 800
-                                    }
-                                },
-                                color: {
-                                    value: '#ffffff'
-                                },
-                                shape: {
-                                    type: 'circle',
-                                    stroke: {
-                                        width: 0,
-                                        color: '#000000'
-                                    },
-                                    polygon: {
-                                        nb_sides: 5
-                                    }
-                                },
-                                opacity: {
-                                    value: 0.5,
-                                    random: false,
-                                    anim: {
-                                        enable: false,
-                                        speed: 1,
-                                        opacity_min: 0.1,
-                                        sync: false
-                                    }
-                                },
-                                size: {
-                                    value: 3,
-                                    random: true,
-                                    anim: {
-                                        enable: false,
-                                        speed: 40,
-                                        size_min: 0.1,
-                                        sync: false
-                                    }
-                                },
-                                line_linked: {
-                                    enable: true,
-                                    distance: 150,
-                                    color: '#ffffff',
-                                    opacity: 0.4,
-                                    width: 1
-                                },
-                                move: {
-                                    enable: true,
-                                    speed: 2,
-                                    direction: 'none',
-                                    random: false,
-                                    straight: false,
-                                    out_mode: 'out',
-                                    bounce: false,
-                                    attract: {
-                                        enable: false,
-                                        rotateX: 600,
-                                        rotateY: 1200
-                                    }
-                                }
-                            },
-                            interactivity: {
-                                detect_on: 'canvas',
-                                events: {
-                                    onhover: {
-                                        enable: true,
-                                        mode: 'grab'
-                                    },
-                                    onclick: {
-                                        enable: true,
-                                        mode: 'push'
-                                    },
-                                    resize: true
-                                },
-                                modes: {
-                                    grab: {
-                                        distance: 140,
-                                        line_linked: {
-                                            opacity: 1
-                                        }
-                                    },
-                                    bubble: {
-                                        distance: 400,
-                                        size: 40,
-                                        duration: 2,
-                                        opacity: 8,
-                                        speed: 3
-                                    },
-                                    repulse: {
-                                        distance: 200,
-                                        duration: 0.4
-                                    },
-                                    push: {
-                                        particles_nb: 4
-                                    },
-                                    remove: {
-                                        particles_nb: 2
-                                    }
-                                }
-                            },
-                            retina_detect: true
-                        });
-                        console.log("ParticlesJS inicializado com sucesso");
-                    } catch (e) {
-                        console.error("Erro ao inicializar ParticlesJS:", e);
-                    }
-                } else {
-                    console.warn('Elemento particles-js não encontrado no documento');
-                }
-            } else {
-                console.warn('Biblioteca particlesJS não está disponível');
-            }
-
-            // Inicializar Chart.js (se disponível)
-            if (typeof Chart !== 'undefined') {
-                // Gráfico de expertise (radar)
-                const expertiseElement = document.getElementById('expertiseChart');
-                if (expertiseElement) {
-                    try {
-                        const expertiseCtx = expertiseElement.getContext('2d');
-                        const expertiseChart = new Chart(expertiseCtx, {
-                            type: 'radar',
-                            data: {
-                                labels: ['NLP', 'Machine Learning', 'Estatística', 'DevOps/MLOps', 'Fraud Detection', 'GenAI'],
-                                datasets: [{
-                                    label: 'Nível de Expertise',
-                                    data: [85, 90, 95, 85, 90, 85],
-                                    backgroundColor: 'rgba(3, 102, 214, 0.2)',
-                                    borderColor: '#0366d6',
-                                    pointBackgroundColor: '#0366d6',
-                                    pointBorderColor: '#fff',
-                                    pointHoverBackgroundColor: '#fff',
-                                    pointHoverBorderColor: '#0366d6'
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: true,
-                                scales: {
-                                    r: {
-                                        angleLines: {
-                                            display: true
-                                        },
-                                        suggestedMin: 0,
-                                        suggestedMax: 100
-                                    }
-                                }
-                            }
-                        });
-                        console.log("Gráfico de expertise inicializado com sucesso");
-                    } catch (e) {
-                        console.error('Erro ao inicializar gráfico de expertise:', e);
-                    }
-                } else {
-                    console.warn('Elemento expertiseChart não encontrado');
-                }
-
-                // Gráfico de tecnologias (barras)
-                const techElement = document.getElementById('techChart');
-                if (techElement) {
-                    try {
-                        const techCtx = techElement.getContext('2d');
-                        const techChart = new Chart(techCtx, {
-                            type: 'bar',
-                            data: {
-                                labels: ['Python', 'R', 'SQL', 'AWS', 'Azure', 'MLOps', 'LLMOps'],
-                                datasets: [{
-                                    label: 'Anos de Experiência',
-                                    data: [10, 8, 12, 7, 5, 5, 3],
-                                    backgroundColor: [
-                                        'rgba(3, 102, 214, 0.8)',
-                                        'rgba(88, 166, 255, 0.8)',
-                                        'rgba(3, 102, 214, 0.8)',
-                                        'rgba(88, 166, 255, 0.8)',
-                                        'rgba(3, 102, 214, 0.8)',
-                                        'rgba(88, 166, 255, 0.8)',
-                                        'rgba(3, 102, 214, 0.8)'
-                                    ],
-                                    borderColor: [
-                                        '#0366d6',
-                                        '#58a6ff',
-                                        '#0366d6',
-                                        '#58a6ff',
-                                        '#0366d6',
-                                        '#58a6ff',
-                                        '#0366d6'
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: true,
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        });
-                        console.log("Gráfico de tecnologias inicializado com sucesso");
-                    } catch (e) {
-                        console.error('Erro ao inicializar gráfico de tecnologias:', e);
-                    }
-                } else {
-                    console.warn('Elemento techChart não encontrado');
-                }
-            } else {
-                console.warn('Biblioteca Chart.js não está disponível');
-            }
-        }
-
-        /**
-         * Função para alternar entre as abas
-         * @param {Event} evt - O evento de clique
-         * @param {string} tabName - O ID da aba a ser exibida
-         */
-        function openTab(evt, tabName) {
-            if (!evt || !tabName) return;
-
-            // Verificar se os elementos existem
-            const tabContents = document.getElementsByClassName('tab-content');
-            const tabs = document.getElementsByClassName('tab');
-            const targetTab = document.getElementById(tabName);
-
-            if (!tabContents || !tabs || !targetTab) {
-                console.warn('Elementos de aba não encontrados');
-                return;
-            }
-
-            // Esconder todos os conteúdos de aba
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove('active');
-            }
-
-            // Desativar todas as abas
-            for (let i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active');
-            }
-
-            // Mostrar o conteúdo da aba selecionada e ativar a aba clicada
-            targetTab.classList.add('active');
-            evt.currentTarget.classList.add('active');
-        }
-
-        // Executar inicialização quando o documento estiver pronto
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log("Documento carregado, inicializando currículo...");
-            initializeCurriculum();
-        });
-
-        // Suporte para navegação instantânea do Material for MkDocs
-        document.addEventListener('DOMContentSwitch', function () {
-            console.log("DOMContentSwitch detectado, reinicializando currículo...");
-            initializeCurriculum();
-        });
-
-        // Suporte para recarregamento após a reconfiguração do tema
-        window.addEventListener('resize', function () {
-            // Reinicializar gráficos apenas após o término do redimensionamento
-            if (this.resizeTimer) clearTimeout(this.resizeTimer);
-            this.resizeTimer = setTimeout(function () {
-                console.log("Janela redimensionada, reinicializando currículo...");
-                initializeCurriculum();
-            }, 500);
-        });
-
-        // Exportar funções para acessibilidade global
-        window.openTab = openTab;
-        window.initializeCurriculum = initializeCurriculum;
-    </script>
-
-    <!-- Link para o script externo como fallback -->
-    <script src="script.js"></script>
-</body>
-
-</html>
