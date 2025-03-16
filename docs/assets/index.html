@@ -5,9 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodrigo Polverari Toledo - Tech Lead & Data Science</title>
+    <!-- Use CDNs com atributos de integridade para melhorar a segurança -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Referência ao CSS externo -->
     <link rel="stylesheet" href="style.css">
+    <!-- Estilos críticos inline como backup -->
+    <style>
+        :root {
+            --primary: #0366d6;
+            --secondary: #0d1117;
+            --accent: #58a6ff;
+            --light: #f6f8fa;
+            --dark: #24292e;
+            --success: #2ea44f;
+            --gray: #6a737d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -417,6 +484,293 @@
         </div>
     </footer>
 
+    <!-- Scripts embutidos para garantir funcionalidade mesmo se o arquivo externo falhar -->
+    <script>
+        // Função para inicializar todas as funcionalidades interativas do currículo
+        function initializeCurriculum() {
+            console.log("Inicializando currículo interativo...");
+
+            // Inicializar Particles.js (se disponível e o elemento existir)
+            if (typeof particlesJS !== 'undefined') {
+                const particlesElement = document.getElementById('particles-js');
+                if (particlesElement) {
+                    try {
+                        particlesJS('particles-js', {
+                            particles: {
+                                number: {
+                                    value: 80,
+                                    density: {
+                                        enable: true,
+                                        value_area: 800
+                                    }
+                                },
+                                color: {
+                                    value: '#ffffff'
+                                },
+                                shape: {
+                                    type: 'circle',
+                                    stroke: {
+                                        width: 0,
+                                        color: '#000000'
+                                    },
+                                    polygon: {
+                                        nb_sides: 5
+                                    }
+                                },
+                                opacity: {
+                                    value: 0.5,
+                                    random: false,
+                                    anim: {
+                                        enable: false,
+                                        speed: 1,
+                                        opacity_min: 0.1,
+                                        sync: false
+                                    }
+                                },
+                                size: {
+                                    value: 3,
+                                    random: true,
+                                    anim: {
+                                        enable: false,
+                                        speed: 40,
+                                        size_min: 0.1,
+                                        sync: false
+                                    }
+                                },
+                                line_linked: {
+                                    enable: true,
+                                    distance: 150,
+                                    color: '#ffffff',
+                                    opacity: 0.4,
+                                    width: 1
+                                },
+                                move: {
+                                    enable: true,
+                                    speed: 2,
+                                    direction: 'none',
+                                    random: false,
+                                    straight: false,
+                                    out_mode: 'out',
+                                    bounce: false,
+                                    attract: {
+                                        enable: false,
+                                        rotateX: 600,
+                                        rotateY: 1200
+                                    }
+                                }
+                            },
+                            interactivity: {
+                                detect_on: 'canvas',
+                                events: {
+                                    onhover: {
+                                        enable: true,
+                                        mode: 'grab'
+                                    },
+                                    onclick: {
+                                        enable: true,
+                                        mode: 'push'
+                                    },
+                                    resize: true
+                                },
+                                modes: {
+                                    grab: {
+                                        distance: 140,
+                                        line_linked: {
+                                            opacity: 1
+                                        }
+                                    },
+                                    bubble: {
+                                        distance: 400,
+                                        size: 40,
+                                        duration: 2,
+                                        opacity: 8,
+                                        speed: 3
+                                    },
+                                    repulse: {
+                                        distance: 200,
+                                        duration: 0.4
+                                    },
+                                    push: {
+                                        particles_nb: 4
+                                    },
+                                    remove: {
+                                        particles_nb: 2
+                                    }
+                                }
+                            },
+                            retina_detect: true
+                        });
+                        console.log("ParticlesJS inicializado com sucesso");
+                    } catch (e) {
+                        console.error("Erro ao inicializar ParticlesJS:", e);
+                    }
+                } else {
+                    console.warn('Elemento particles-js não encontrado no documento');
+                }
+            } else {
+                console.warn('Biblioteca particlesJS não está disponível');
+            }
+
+            // Inicializar Chart.js (se disponível)
+            if (typeof Chart !== 'undefined') {
+                // Gráfico de expertise (radar)
+                const expertiseElement = document.getElementById('expertiseChart');
+                if (expertiseElement) {
+                    try {
+                        const expertiseCtx = expertiseElement.getContext('2d');
+                        const expertiseChart = new Chart(expertiseCtx, {
+                            type: 'radar',
+                            data: {
+                                labels: ['NLP', 'Machine Learning', 'Estatística', 'DevOps/MLOps', 'Fraud Detection', 'GenAI'],
+                                datasets: [{
+                                    label: 'Nível de Expertise',
+                                    data: [85, 90, 95, 85, 90, 85],
+                                    backgroundColor: 'rgba(3, 102, 214, 0.2)',
+                                    borderColor: '#0366d6',
+                                    pointBackgroundColor: '#0366d6',
+                                    pointBorderColor: '#fff',
+                                    pointHoverBackgroundColor: '#fff',
+                                    pointHoverBorderColor: '#0366d6'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                scales: {
+                                    r: {
+                                        angleLines: {
+                                            display: true
+                                        },
+                                        suggestedMin: 0,
+                                        suggestedMax: 100
+                                    }
+                                }
+                            }
+                        });
+                        console.log("Gráfico de expertise inicializado com sucesso");
+                    } catch (e) {
+                        console.error('Erro ao inicializar gráfico de expertise:', e);
+                    }
+                } else {
+                    console.warn('Elemento expertiseChart não encontrado');
+                }
+
+                // Gráfico de tecnologias (barras)
+                const techElement = document.getElementById('techChart');
+                if (techElement) {
+                    try {
+                        const techCtx = techElement.getContext('2d');
+                        const techChart = new Chart(techCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Python', 'R', 'SQL', 'AWS', 'Azure', 'MLOps', 'LLMOps'],
+                                datasets: [{
+                                    label: 'Anos de Experiência',
+                                    data: [10, 8, 12, 7, 5, 5, 3],
+                                    backgroundColor: [
+                                        'rgba(3, 102, 214, 0.8)',
+                                        'rgba(88, 166, 255, 0.8)',
+                                        'rgba(3, 102, 214, 0.8)',
+                                        'rgba(88, 166, 255, 0.8)',
+                                        'rgba(3, 102, 214, 0.8)',
+                                        'rgba(88, 166, 255, 0.8)',
+                                        'rgba(3, 102, 214, 0.8)'
+                                    ],
+                                    borderColor: [
+                                        '#0366d6',
+                                        '#58a6ff',
+                                        '#0366d6',
+                                        '#58a6ff',
+                                        '#0366d6',
+                                        '#58a6ff',
+                                        '#0366d6'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                        console.log("Gráfico de tecnologias inicializado com sucesso");
+                    } catch (e) {
+                        console.error('Erro ao inicializar gráfico de tecnologias:', e);
+                    }
+                } else {
+                    console.warn('Elemento techChart não encontrado');
+                }
+            } else {
+                console.warn('Biblioteca Chart.js não está disponível');
+            }
+        }
+
+        /**
+         * Função para alternar entre as abas
+         * @param {Event} evt - O evento de clique
+         * @param {string} tabName - O ID da aba a ser exibida
+         */
+        function openTab(evt, tabName) {
+            if (!evt || !tabName) return;
+
+            // Verificar se os elementos existem
+            const tabContents = document.getElementsByClassName('tab-content');
+            const tabs = document.getElementsByClassName('tab');
+            const targetTab = document.getElementById(tabName);
+
+            if (!tabContents || !tabs || !targetTab) {
+                console.warn('Elementos de aba não encontrados');
+                return;
+            }
+
+            // Esconder todos os conteúdos de aba
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            // Desativar todas as abas
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // Mostrar o conteúdo da aba selecionada e ativar a aba clicada
+            targetTab.classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Executar inicialização quando o documento estiver pronto
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Documento carregado, inicializando currículo...");
+            initializeCurriculum();
+        });
+
+        // Suporte para navegação instantânea do Material for MkDocs
+        document.addEventListener('DOMContentSwitch', function () {
+            console.log("DOMContentSwitch detectado, reinicializando currículo...");
+            initializeCurriculum();
+        });
+
+        // Suporte para recarregamento após a reconfiguração do tema
+        window.addEventListener('resize', function () {
+            // Reinicializar gráficos apenas após o término do redimensionamento
+            if (this.resizeTimer) clearTimeout(this.resizeTimer);
+            this.resizeTimer = setTimeout(function () {
+                console.log("Janela redimensionada, reinicializando currículo...");
+                initializeCurriculum();
+            }, 500);
+        });
+
+        // Exportar funções para acessibilidade global
+        window.openTab = openTab;
+        window.initializeCurriculum = initializeCurriculum;
+    </script>
+
+    <!-- Link para o script externo como fallback -->
     <script src="script.js"></script>
 </body>
 
