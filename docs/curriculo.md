@@ -1,8 +1,3 @@
-# Meu Currículo
-
-<a href="../assets/index.html" target="_blank">Visualizar Currículo Interativo</a>
-
-## Versão Simplificada
 
 # Meu Currículo
 
