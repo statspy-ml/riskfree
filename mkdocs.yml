@@ -17,9 +17,7 @@ theme:
   font:
     text: "Roboto"
     code: "Roboto Mono"
-  # Adicione outros parâmetros de configuração do tema aqui
 
-# Outras configurações possíveis
 site_url: "https://statspy-mk.github.io/riskfree"
 use_directory_urls: true
 
@@ -92,4 +90,3 @@ nav:
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js
-  - assets/script.js
