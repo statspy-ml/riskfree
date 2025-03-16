@@ -1,6 +1,6 @@
 # Meu Currículo
 
-<a href="../assets/curriculo/index.html" target="_blank">Visualizar Currículo Interativo</a>
+<a href="../assets/index.html" target="_blank">Visualizar Currículo Interativo</a>
 
 ## Versão Simplificada
 
